@@ -108,7 +108,7 @@ static int set_partitions_ro(void)
 
         struct stat st;
         if (fstat(fd, &st) == 0 && S_ISBLK(st.st_mode)) {
-            int on = 1;
+            int on = 0;
             ioctl(fd, BLKROSET, &on);
         }
         close(fd);
