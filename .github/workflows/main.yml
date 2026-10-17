@@ -76,7 +76,7 @@ jobs:
           if [ "${{ github.event_name }}" = "pull_request" ]; then
             ./gradlew :app:assembleDebug
           else
-            ./gradlew :app:assembleRelease
+            ./gradlew :app:assembleDebug
           fi
 
       - name: Upload DFRoot APK
