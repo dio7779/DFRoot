@@ -55,7 +55,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - name: Validate signing config
+    
       
       - name: Download DF LKMs
         uses: actions/download-artifact@v7
