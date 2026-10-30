@@ -1,12 +1,10 @@
-import java.util.Properties
+
 
 plugins {
     id("com.android.application")
 }
 
-val signingProps = Properties()
-val signingPropsFile = rootProject.file("signing.properties")
-if (signingPropsFile.exists()) signingProps.load(signingPropsFile.inputStream())
+
 
 android {
     namespace = "df.root"
@@ -28,14 +26,7 @@ android {
         }
     }
 
-    signingConfigs {
-        create("release") {
-            storeFile = file(signingProps.getProperty("KEYSTORE_FILE"))
-            storePassword = signingProps.getProperty("KEYSTORE_PASSWORD")
-            keyAlias = signingProps.getProperty("KEY_ALIAS")
-            keyPassword = signingProps.getProperty("KEY_PASSWORD")
-        }
-    }
+    
 
     buildTypes {
         debug {
@@ -43,7 +34,6 @@ android {
             signingConfig = signingConfigs.getByName("debug")
         }
         release {
-            signingConfig = signingConfigs.getByName("release")
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
